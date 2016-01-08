@@ -27,6 +27,9 @@
         <fileset dir="${appserver.lib}">
             <include name="servlet*.jar"/>
         </fileset>
+    	<fileset dir="${appserver.lib}">
+    		<include name="*.jar"/>
+    	</fileset>
         <pathelement path="${build.dir}"/>
     </path>
 
@@ -50,7 +53,7 @@
 
     <target name="build" description="Compile main source tree java files">
         <mkdir dir="${build.dir}"/>
-        <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true"
+        <javac destdir="${build.dir}" source="1.8" target="1.8" debug="true"
                deprecation="false" optimize="false" failonerror="true">
             <src path="${src.dir}"/>
             <classpath refid="master-classpath"/>
@@ -91,7 +94,7 @@
         </fileset>
     </path>
 
-    <taskdef name="install" classname="org.apache.catalina.ant.InstallTask">
+    <taskdef name="install" classname="org.apache.catalina.ant.DeployTask">
         <classpath refid="catalina-ant-classpath"/>
     </taskdef>
     <taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask">
@@ -148,7 +151,7 @@
 	
 	<target name="buildtests" description="Compile test tree java files">
 	        <mkdir dir="${build.dir}"/>
-	        <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true"
+	        <javac destdir="${build.dir}" source="1.8" target="1.8" debug="true"
 	            deprecation="false" optimize="false" failonerror="true">
 	            <src path="${test.dir}"/>
 	            <classpath refid="master-classpath"/>
